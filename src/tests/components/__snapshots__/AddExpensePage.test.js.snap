@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render AddExpensePage 1`] = `
+<div>
+  add expense component
+  <ExpenseForm
+    onSubmit={[Function]}
+  />
+</div>
+`;
