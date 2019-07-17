@@ -52,4 +52,9 @@ test('test edit expense', () => {
 test('test expense not found when editing', () => {
     const state = expensesReducer(expenses, {type: 'EDIT_EXPENSE', id: '-1', updates: {description: 'changed!'}});
     expect(state).toEqual(expenses);
+});
+
+test('set expenses', () => {
+    const state = expensesReducer(expenses, {type: 'SET_EXPENSES', expenses: [expenses[1]]});
+    expect(state).toEqual([expenses[1]]);
 })
