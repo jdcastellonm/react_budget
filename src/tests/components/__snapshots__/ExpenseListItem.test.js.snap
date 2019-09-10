@@ -3,7 +3,6 @@
 exports[`render an expense 1`] = `
 <div>
   <Link
-    replace={false}
     to="/edit/3"
   >
     <h3>
