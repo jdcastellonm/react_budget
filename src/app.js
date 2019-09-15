@@ -9,16 +9,13 @@ import {setTextFilter, sortByDate, sortByAmount, setStartDate, setEndDate} from 
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
-import './firebase/firebase'
+import {firebase} from './firebase/firebase'
 
 const store = configureStore();
 store.subscribe(() => {
     const state = store.getState();
     console.log(getVisibleExpenses(state.expenses, state.filters))
 });
-// const expenseOne = store.dispatch(addExpense({description: 'water bill', amount: 7570}));
-// const expenseTwo = store.dispatch(addExpense({description: 'gas bill', amount: 2100}));
-// const expenseThree = store.dispatch(addExpense({description: 'car', amount: 18000}))
 
 const App = (
     <Provider store={store}>
@@ -26,6 +23,13 @@ const App = (
     </Provider>
 );
 
+firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+        console.log('log in');
+    } else {
+        console.log('log out');
+    }
+});
 
 ReactDOM.render(<p>Loading data...</p>, document.getElementById("app"));
 store.dispatch(startSetExpenses()).then(() => {
