@@ -1,15 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
-import AppRouter from './routers/AppRouter';
+import AppRouter, {history} from './routers/AppRouter';
 import configureStore from './store/configureStore';
 import getVisibleExpenses from './selectors/expenses';
 import {startSetExpenses} from './actions/expenses';
-import {setTextFilter, sortByDate, sortByAmount, setStartDate, setEndDate} from './actions/filters';
+// import {setTextFilter, sortByDate, sortByAmount, setStartDate, setEndDate} from './actions/filters';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
 import {firebase} from './firebase/firebase'
+import {login, logout} from './actions/auth';
 
 const store = configureStore();
 store.subscribe(() => {
@@ -23,15 +24,30 @@ const App = (
     </Provider>
 );
 
+
+// render functions
+ReactDOM.render(<p>Loading data...</p>, document.getElementById("app"));
+let hasRendered = false;
+const renderApp = () => { // make sure the page renders only once
+    if (!hasRendered) {
+        ReactDOM.render(App, document.getElementById("app"));
+        hasRendered = true;
+    }
+}
+
+// authentication redirects
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-        console.log('log in');
+        store.dispatch(login(user.uid)); // dispatch the login action and send the user id to the state
+        store.dispatch(startSetExpenses()).then(() => {
+            renderApp();
+            if (history.location.pathname === '/') { // redirect to dashboard if on login page
+                history.push('/dashboard');
+            }
+        });
     } else {
-        console.log('log out');
+        store.dispatch(logout()); // reset uid to null
+        renderApp();
+        history.push('/'); // redirect to login page (logged out)
     }
-});
-
-ReactDOM.render(<p>Loading data...</p>, document.getElementById("app"));
-store.dispatch(startSetExpenses()).then(() => {
-    ReactDOM.render(App, document.getElementById("app"));
 });
