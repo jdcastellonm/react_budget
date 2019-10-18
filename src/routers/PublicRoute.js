@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Route, Redirect} from 'react-router-dom';
 
+// 'Component' argument is the LoginPage being passed from the Router
 export const PublicRoute = ({isAuthenticated, component: Component, ...rest}) => (
     <Route {...rest} component={(props) => (
         isAuthenticated ? (<Redirect to="/dashboard"/>) : (<Component {...props}/>) 
