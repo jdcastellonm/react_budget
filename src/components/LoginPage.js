@@ -3,9 +3,11 @@ import {connect} from 'react-redux';
 import {startLogin} from '../actions/auth';
 
 export const LoginPage = (props) => (
-    <div>
-        Welcome to Budget. Please login.
-        <button onClick={props.startLogin}>Login</button>
+    <div className="box-layout">
+        <div className="box-layout__box">
+            <h1 className="box-layout__title">Welcome to Budget. Please login.</h1>
+            <button className="button" onClick={props.startLogin}>Login with Google</button>
+        </div>
     </div>
 );
 
