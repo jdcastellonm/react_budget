@@ -3,6 +3,18 @@
     border: none;
     border-radius: $rounded;
     color: white;
+    display: inline-block;
     font-size: $font-large;
+    line-height: 1;
     padding: $medium;
+    text-decoration: none;
+}
+
+.button--secondary {
+    @extend .button;
+    background-color: #888888;
+}
+
+.button--link {
+    background: none;
 }
