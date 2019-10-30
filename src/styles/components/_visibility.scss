@@ -1,0 +1,12 @@
+.show-mobile {
+    @media (min-width: $desktop-breakpoint) {
+        display: none;
+    }
+}
+
+/*substracting 0.1rem prevents both modes from showing at the same time*/
+.show-desktop {
+    @media (max-width: $desktop-breakpoint - 0.1rem) {
+        display: none;
+    }
+}
