@@ -11,6 +11,7 @@ import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
 import {firebase} from './firebase/firebase'
 import {login, logout} from './actions/auth';
+import LoadingScreen from './components/LoadingScreen';
 
 const store = configureStore();
 store.subscribe(() => {
@@ -26,7 +27,7 @@ const App = (
 
 
 // render functions
-ReactDOM.render(<p>Loading data...</p>, document.getElementById("app"));
+ReactDOM.render(<LoadingScreen/>, document.getElementById("app"));
 let hasRendered = false;
 const renderApp = () => { // make sure the page renders only once
     if (!hasRendered) {

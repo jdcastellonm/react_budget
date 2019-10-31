@@ -1,38 +1,92 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ExpenseList with no expenses 1`] = `
-<div>
-  <p>
-    No expenses.
-  </p>
+<div
+  className="content-container"
+>
+  <div
+    className="list-header"
+  >
+    <div
+      className="show-mobile"
+    >
+      Expenses
+    </div>
+    <div
+      className="show-desktop"
+    >
+      Expense
+    </div>
+    <div
+      className="show-desktop"
+    >
+      Amount
+    </div>
+  </div>
+  <div
+    className="list-body"
+  >
+    <div
+      className="list-item__message"
+    >
+      <span>
+        No expenses.
+      </span>
+    </div>
+  </div>
 </div>
 `;
 
 exports[`test ExpenseList with expenses 1`] = `
-<div>
-  <ExpenseListItem
-    amount={195}
-    createdAt={0}
-    description="snack"
-    id="1"
-    key="1"
-    note=""
-  />
-  <ExpenseListItem
-    amount={43195}
-    createdAt={432000000}
-    description="car"
-    id="2"
-    key="2"
-    note=""
-  />
-  <ExpenseListItem
-    amount={12300}
-    createdAt={-259200000}
-    description="card"
-    id="3"
-    key="3"
-    note=""
-  />
+<div
+  className="content-container"
+>
+  <div
+    className="list-header"
+  >
+    <div
+      className="show-mobile"
+    >
+      Expenses
+    </div>
+    <div
+      className="show-desktop"
+    >
+      Expense
+    </div>
+    <div
+      className="show-desktop"
+    >
+      Amount
+    </div>
+  </div>
+  <div
+    className="list-body"
+  >
+    <ExpenseListItem
+      amount={195}
+      createdAt={0}
+      description="snack"
+      id="1"
+      key="1"
+      note=""
+    />
+    <ExpenseListItem
+      amount={43195}
+      createdAt={432000000}
+      description="car"
+      id="2"
+      key="2"
+      note=""
+    />
+    <ExpenseListItem
+      amount={12300}
+      createdAt={-259200000}
+      description="card"
+      id="3"
+      key="3"
+      note=""
+    />
+  </div>
 </div>
 `;
